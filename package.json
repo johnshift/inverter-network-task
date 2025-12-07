@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "echo \"Skipping tests ...\" && exit 0"
   },
   "dependencies": {
     "next": "16.0.7",
@@ -14,6 +15,8 @@
     "react-dom": "19.2.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^20.2.0",
+    "@commitlint/config-conventional": "^20.2.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -25,9 +28,24 @@
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-simple-import-sort": "^12.1.1",
+    "lint-staged": "^16.2.7",
     "prettier": "^3.7.4",
     "prettier-plugin-tailwindcss": "^0.7.2",
+    "simple-git-hooks": "^2.13.1",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "simple-git-hooks": {
+    "commit-msg": "pnpm dlx commitlint --edit $1",
+    "pre-commit": "pnpm lint-staged",
+    "pre-push": "pnpm typecheck && pnpm build && pnpm test"
+  },
+  "lint-staged": {
+    "*": "eslint"
   }
 }
