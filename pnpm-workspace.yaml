@@ -1,4 +1,7 @@
 onlyBuiltDependencies:
+  - bufferutil
+  - keccak
   - sharp
   - simple-git-hooks
   - unrs-resolver
+  - utf-8-validate
