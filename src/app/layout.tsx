@@ -3,8 +3,8 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 
+import { Nav } from '@/components/nav';
 import { ThemeProvider } from '@/components/providers/theme-provider';
-import { ThemeToggle } from '@/components/theme-toggle';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -35,7 +35,7 @@ export default function RootLayout({
           defaultTheme='system'
           disableTransitionOnChange
         >
-          <ThemeToggle />
+          <Nav />
           {children}
         </ThemeProvider>
       </body>
