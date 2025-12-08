@@ -74,7 +74,7 @@ const FormItemContext = React.createContext<FormItemContextValue>(
   {} as FormItemContextValue,
 );
 
-function FormItem({ className, ...props }: React.ComponentProps<'div'>) {
+const FormItem = ({ className, ...props }: React.ComponentProps<'div'>) => {
   const id = React.useId();
 
   return (
@@ -82,12 +82,12 @@ function FormItem({ className, ...props }: React.ComponentProps<'div'>) {
       <div data-slot='form-item' className={cn('grid gap-2', className)} {...props} />
     </FormItemContext.Provider>
   );
-}
+};
 
-function FormLabel({
+const FormLabel = ({
   className,
   ...props
-}: React.ComponentProps<typeof LabelPrimitive.Root>) {
+}: React.ComponentProps<typeof LabelPrimitive.Root>) => {
   const { error, formItemId } = useFormField();
 
   return (
@@ -99,9 +99,9 @@ function FormLabel({
       {...props}
     />
   );
-}
+};
 
-function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
+const FormControl = ({ ...props }: React.ComponentProps<typeof Slot>) => {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField();
 
   return (
@@ -115,9 +115,9 @@ function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
       {...props}
     />
   );
-}
+};
 
-function FormDescription({ className, ...props }: React.ComponentProps<'p'>) {
+const FormDescription = ({ className, ...props }: React.ComponentProps<'p'>) => {
   const { formDescriptionId } = useFormField();
 
   return (
@@ -128,9 +128,9 @@ function FormDescription({ className, ...props }: React.ComponentProps<'p'>) {
       {...props}
     />
   );
-}
+};
 
-function FormMessage({ className, ...props }: React.ComponentProps<'p'>) {
+const FormMessage = ({ className, ...props }: React.ComponentProps<'p'>) => {
   const { error, formMessageId } = useFormField();
   const body = error ? String(error?.message ?? '') : props.children;
 
@@ -148,7 +148,7 @@ function FormMessage({ className, ...props }: React.ComponentProps<'p'>) {
       {body}
     </p>
   );
-}
+};
 
 export {
   Form,

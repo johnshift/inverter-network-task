@@ -163,14 +163,14 @@ const FieldSeparator = ({
   </div>
 );
 
-function FieldError({
+const FieldError = ({
   className,
   children,
   errors,
   ...props
 }: React.ComponentProps<'div'> & {
   errors?: Array<{ message?: string } | undefined>;
-}) {
+}) => {
   const content = useMemo(() => {
     if (children) {
       return children;
@@ -211,7 +211,7 @@ function FieldError({
       {content}
     </div>
   );
-}
+};
 
 export {
   Field,
