@@ -1,14 +1,13 @@
 'use client';
 
 import { ThemeProvider } from 'next-themes';
-import { useState } from 'react';
 
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
 
 import { ReactQueryProvider } from './react-query-provider';
 
-import { getConfig } from '@/features/wallet/config/rainbowkit-config';
+import { config } from '@/features/wallet/config/rainbowkit-config';
 
 interface Props {
   children: React.ReactNode;
@@ -16,9 +15,6 @@ interface Props {
 }
 
 export const RootProvider = ({ children, nav }: Props) => {
-  // Lazy load config - WalletConnect uses indexDB (browser only)
-  const [config] = useState(() => getConfig());
-
   return (
     <ThemeProvider
       attribute='class'
