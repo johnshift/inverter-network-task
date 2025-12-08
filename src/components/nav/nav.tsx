@@ -7,7 +7,11 @@ import { Brand } from '@/components/brand';
 import { NavLinks } from '@/components/nav/nav-links';
 import { ThemeToggle } from '@/components/theme-toggle';
 
-export const Nav = () => {
+interface Props {
+  connectWallet: React.ReactNode;
+}
+
+export const Nav = ({ connectWallet }: Props) => {
   return (
     <nav className='sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60'>
       <div className='container mx-auto h-16 px-2 md:px-4'>
@@ -22,12 +26,9 @@ export const Nav = () => {
             className='hidden flex-1 flex-row items-center justify-center gap-6 md:flex'
           />
 
-          <div className='hidden items-center gap-2 md:flex md:gap-4'>
-            <ThemeToggle className='relative' />
-            <p className='text-sm text-muted-foreground'>Web3 Controls</p>
-          </div>
-          <div className='flex items-center gap-2 md:hidden'>
-            <p className='text-xs text-muted-foreground'>Web3 Controls</p>
+          <div className='flex items-center gap-2 md:gap-4'>
+            <ThemeToggle className='relative hidden md:inline-flex' />
+            {connectWallet}
           </div>
         </div>
       </div>

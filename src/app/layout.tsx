@@ -1,10 +1,12 @@
 import './globals.css';
+import '@rainbow-me/rainbowkit/styles.css';
 
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 
 import { Nav } from '@/components/nav';
 import { RootProvider } from '@/components/providers/root-provider';
+import { ConnectWallet } from '@/features/wallet/components/connect-wallet';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -29,7 +31,9 @@ const RootLayout = ({
   return (
     <html lang='en' suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <RootProvider nav={<Nav />}>{children}</RootProvider>
+        <RootProvider nav={<Nav connectWallet={<ConnectWallet />} />}>
+          {children}
+        </RootProvider>
       </body>
     </html>
   );

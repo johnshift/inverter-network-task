@@ -2,9 +2,9 @@
 
 import { ThemeProvider } from 'next-themes';
 
-import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
 
+import { RainbowKitProvider } from './rainbowkit-provider';
 import { ReactQueryProvider } from './react-query-provider';
 
 import { config } from '@/features/wallet/config/rainbowkit-config';
@@ -22,10 +22,12 @@ export const RootProvider = ({ children, nav }: Props) => {
       defaultTheme='system'
       disableTransitionOnChange
     >
-      {nav}
       <WagmiProvider config={config}>
         <ReactQueryProvider>
-          <RainbowKitProvider>{children}</RainbowKitProvider>
+          <RainbowKitProvider>
+            {nav}
+            {children}
+          </RainbowKitProvider>
         </ReactQueryProvider>
       </WagmiProvider>
     </ThemeProvider>
