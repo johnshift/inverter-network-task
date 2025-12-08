@@ -26,7 +26,7 @@ export const RootProvider = ({ children, nav }: Props) => {
         <ReactQueryProvider>
           <RainbowKitProvider>
             {nav}
-            {children}
+            <div className='container mx-auto px-2 md:px-4'>{children}</div>
           </RainbowKitProvider>
         </ReactQueryProvider>
       </WagmiProvider>
