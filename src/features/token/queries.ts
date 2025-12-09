@@ -8,7 +8,7 @@ import { getTokenSymbol } from '@/features/token/api/get-token-symbol';
 export const tokenQueries = createQueryKeys('token', {
   all: null,
   balance: (address: Address) => ({
-    queryKey: [address],
+    queryKey: ['balance', address],
     queryFn: async () => getTokenBalance(address),
   }),
   name: () => ({
