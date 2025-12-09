@@ -8,7 +8,7 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { cn } from '@/lib/utils';
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: 'Faucet', href: '/faucet', isProtected: true },
+  { label: 'Mint Token', href: '/mint', isProtected: true },
   { label: 'Transactions', href: '/transactions', isProtected: true },
   { label: 'Market', href: '/market' },
 ];
