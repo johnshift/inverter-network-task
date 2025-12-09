@@ -1,4 +1,1 @@
-const TransactionsPage = () => {
-  return <div>TransactionsPage</div>;
-};
-export default TransactionsPage;
+export { TransactionsPage as default } from '@/features/token/pages/transactions-page';
