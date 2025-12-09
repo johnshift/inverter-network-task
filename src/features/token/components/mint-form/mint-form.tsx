@@ -62,7 +62,7 @@ export const MintForm = () => {
   };
 
   const isLoading = isPending || isSubmitting;
-  const isDisabled =
+  const isButtonDisabled =
     !isConnected || isLoading || amount < MIN_AMOUNT || amount > MAX_AMOUNT;
 
   if (showSuccess && lastReceipt) {
@@ -77,8 +77,12 @@ export const MintForm = () => {
 
   return (
     <div className='space-y-6'>
-      <AmountSelector amount={amount} onAmountChange={setAmount} disabled={isDisabled} />
-      <MintButton onClick={handleMint} isLoading={isLoading} disabled={isDisabled} />
+      <AmountSelector amount={amount} onAmountChange={setAmount} disabled={isLoading} />
+      <MintButton
+        onClick={handleMint}
+        isLoading={isLoading}
+        disabled={isButtonDisabled}
+      />
     </div>
   );
 };
