@@ -2,8 +2,12 @@ import { Address } from 'viem';
 
 import { MOCK_ERC20 } from '@/features/token/constants';
 import { getTokenTransfersResponseSchema } from '@/features/token/schemas';
+import { type TokenTransfersPage } from '@/features/token/types';
 
-export const getTokenTransfers = async (address: Address, pageKeyParam?: string) => {
+export const getTokenTransfers = async (
+  address: Address,
+  pageKeyParam?: string,
+): Promise<TokenTransfersPage> => {
   const res = await fetch(
     `https://eth-sepolia.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_KEY}`,
     {
