@@ -2,9 +2,11 @@
 
 import { type FallbackProps } from 'react-error-boundary';
 
-import { AlertCircleIcon, WalletIcon } from 'lucide-react';
+import { useChainModal } from '@rainbow-me/rainbowkit';
+import { AlertCircleIcon, ArrowUpDownIcon, WalletIcon } from 'lucide-react';
 import { type Address, zeroAddress } from 'viem';
-import { useAccount } from 'wagmi';
+import { sepolia } from 'viem/chains';
+import { useAccount, useChainId } from 'wagmi';
 
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -17,15 +19,56 @@ import { useTokenSymbol } from '@/features/token/hooks/use-token-symbol';
 import { tokenQueries } from '@/features/token/queries';
 
 const BalanceInfoInner = ({ address }: { address: Address }) => {
+  const { isConnected } = useAccount();
+  const chainId = useChainId();
+  const { openChainModal } = useChainModal();
+
+  const isSepolia = chainId === sepolia.id;
+  const showNetworkError = isConnected && !isSepolia;
+  const queriesEnabled = !showNetworkError;
+
   const {
     data: balance,
     isLoading: isLoadingBalance,
     isRefetching,
-  } = useTokenBalance(address || zeroAddress);
-  const { data: tokenName, isLoading: isLoadingName } = useTokenName();
-  const { data: tokenSymbol, isLoading: isLoadingSymbol } = useTokenSymbol();
+  } = useTokenBalance(address || zeroAddress, queriesEnabled);
+  const { data: tokenName, isLoading: isLoadingName } = useTokenName(queriesEnabled);
+  const { data: tokenSymbol, isLoading: isLoadingSymbol } =
+    useTokenSymbol(queriesEnabled);
 
   const isLoading = isLoadingBalance || isLoadingName || isLoadingSymbol;
+
+  if (showNetworkError) {
+    return (
+      <div className='rounded-lg border bg-card p-4 shadow-sm'>
+        <div className='flex items-center gap-3'>
+          <AlertCircleIcon className='size-8 shrink-0 text-destructive' />
+          <div className='flex flex-1 flex-col gap-1'>
+            <Label>Current Balance</Label>
+            <div className='flex items-center justify-between gap-2'>
+              <div className='flex flex-col gap-0.5'>
+                <p className='text-sm font-medium text-destructive'>
+                  Unsupported Network
+                </p>
+                <p className='text-xs text-muted-foreground'>
+                  Please switch to <span className='font-semibold'>Sepolia</span> network
+                </p>
+              </div>
+              <Button
+                variant='outline'
+                size='sm'
+                onClick={openChainModal}
+                className='shrink-0 gap-1'
+              >
+                <ArrowUpDownIcon className='size-3' />
+                Switch Network
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className='rounded-lg border bg-card p-4 shadow-sm'>
