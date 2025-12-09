@@ -6,6 +6,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 
 import { Nav } from '@/components/nav';
 import { RootProvider } from '@/components/providers/root-provider';
+import { Toaster } from '@/components/ui/sonner';
 import { ConnectWallet } from '@/features/wallet/components/connect-wallet';
 
 const geistSans = Geist({
@@ -33,6 +34,7 @@ const RootLayout = ({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <RootProvider nav={<Nav connectWallet={<ConnectWallet />} />}>
           {children}
+          <Toaster closeButton richColors duration={6000} />
         </RootProvider>
       </body>
     </html>
