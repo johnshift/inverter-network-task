@@ -124,10 +124,6 @@ src/features/
 - **Radix UI** - Unstyled, accessible component primitives
 - **Lucide React** - Icon library
 
-**Form Handling & Validation:**
-
-- **@hookform/resolvers** - Zod integration for React Hook Form
-
 **Other:**
 
 - **React Error Boundary** - Error handling and recovery
@@ -144,7 +140,7 @@ src/features/
 
 4. **Error Boundaries**: React Error Boundaries catch and display errors gracefully
 
-5. **Schema-First Validation**: Zod schemas define data contracts for API responses and forms
+5. **Schema Validation**: Zod schemas define data contracts for API responses and forms
 
 6. **Query Key Factory**: Centralized, type-safe query key management prevents key mismatches
 
