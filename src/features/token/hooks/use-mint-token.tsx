@@ -33,6 +33,9 @@ export const useMintToken = () => {
     },
     onSuccess: (data, { address, amount }) => {
       queryClient.invalidateQueries({ queryKey: tokenQueries.balance(address).queryKey });
+      queryClient.invalidateQueries({
+        queryKey: tokenQueries.transfers(address).queryKey,
+      });
       const formattedAmount = formatUnits(amount, 18);
       toast.success(`You have minted ${formattedAmount} tokens!`, {
         description: (
