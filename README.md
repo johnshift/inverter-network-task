@@ -24,7 +24,13 @@ cd inverter-network-task
 pnpm install
 ```
 
-3. Create a `.env.local` file in the root directory with the following variables:
+3. Setup git hooks:
+
+```bash
+npx simple-git-hooks
+```
+
+4. Create a `.env.local` file in the root directory with the following variables:
 
 ```env
 NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=your_walletconnect_project_id
@@ -36,7 +42,7 @@ NEXT_PUBLIC_ALCHEMY_KEY=your_alchemy_api_key
 - **WalletConnect Project ID**: Sign up at [WalletConnect Cloud](https://cloud.walletconnect.com/) and create a new project
 - **Alchemy Key**: Sign up at [Alchemy](https://www.alchemy.com/) and create an app to get your API key
 
-4. Verify environment variables are properly configured (the app will throw an error on startup if they're missing or invalid)
+5. Verify environment variables are properly configured (the app will throw an error on startup if they're missing or invalid)
 
 ## How to Run
 
