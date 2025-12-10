@@ -6,8 +6,8 @@ import { ArrowDownIcon, ArrowUpIcon, WalletIcon } from 'lucide-react';
 import { type Address } from 'viem';
 import { useAccount } from 'wagmi';
 
-import { CopyText } from '@/app/components/copy-text';
-import { LinkText } from '@/app/components/link-text';
+import { CopyText } from '@/components/copy-text';
+import { LinkText } from '@/components/link-text';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
