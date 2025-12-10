@@ -55,8 +55,8 @@ export const RefreshIntervalInput = ({
   };
 
   return (
-    <div className='space-y-2 self-end'>
-      <div className='flex items-center justify-end gap-1.5'>
+    <div className='w-full space-y-2 md:w-auto md:self-end'>
+      <div className='flex items-center gap-1.5 md:justify-end'>
         <Label htmlFor='refresh-interval-input'>Refresh Interval</Label>
         <Tooltip>
           <TooltipTrigger asChild>
@@ -67,7 +67,7 @@ export const RefreshIntervalInput = ({
           </TooltipContent>
         </Tooltip>
       </div>
-      <InputGroup className='ml-auto w-fit'>
+      <InputGroup className='w-full md:ml-auto md:w-fit'>
         <InputGroupAddon>
           <InputGroupText>
             {disabled ? (

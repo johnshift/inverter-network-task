@@ -5,7 +5,10 @@ import * as React from 'react';
 import { cn } from '@/lib/utils/index';
 
 const Table = ({ className, ...props }: React.ComponentProps<'table'>) => (
-  <div data-slot='table-container' className='relative w-full overflow-x-auto'>
+  <div
+    data-slot='table-container'
+    className='relative w-full overflow-x-auto scroll-smooth [-webkit-overflow-scrolling:touch]'
+  >
     <table
       data-slot='table'
       className={cn('w-full caption-bottom text-sm', className)}
