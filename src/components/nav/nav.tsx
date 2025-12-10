@@ -43,7 +43,7 @@ export const Nav = ({ connectWallet }: Props) => {
 
           <NavLinks
             items={NAV_ITEMS}
-            className='absolute left-1/2 hidden -translate-x-1/2 flex-row items-center gap-6 md:flex'
+            className='absolute left-1/2 hidden -translate-x-1/2 flex-row items-center gap-6 lg:flex'
           />
 
           <div className='flex items-center gap-2 md:gap-4'>
